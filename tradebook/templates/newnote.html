@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <h2>New Note</h2>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+
+          <form>
+            <div class="form-group">
+              
+                <input method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+             
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          </form>
+        
+
+    
+                <!-- {% comment %} <table>
+                <input action="/your-name/" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Submit">
+                <input "submit" value="OK">
+                </form></table>  {% endcomment %} -->
+
+
+
+                
+        {% comment %} <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="time">Time</label>
+                <input type="datetime-local" name="time" class="form-control" id="time" required>
+            </div>
+            <div class="form-group">
+                <label for="index">Index</label>
+                <textarea name="index" class="form-control" id="index" ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form> {% endcomment %}
+
+    </div>
+</div>
+
+{% endblock %}
