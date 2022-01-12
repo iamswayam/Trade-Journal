@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 from .models import Note
 from .forms import NoteForm
 
@@ -25,16 +27,10 @@ def newnote(request):
         form = NoteForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            newnote = form.save()
+            return HttpResponseRedirect(reverse(newnote, args=(newnote.html,)))
     else:
         form = NoteForm()
 
     return render(request, 'newnote.html', {'form': form})
 
-    # form = NoteForm(request.POST or None, request.FILES or None)
-
-    # if form.is_valid():
-    #     form.save()
-
-    # context['form'] = form
-    # return render(request, "home.html", context)

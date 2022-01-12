@@ -6,7 +6,7 @@ from django import forms
 class NoteForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ['date','time', 'index', 'strike_price', 'position', 'call_type', 'avg_price', 'sqo_price', 'sqo_price2', 'swing_high', 'swing_low', 'profit_loss', 'upload']
+        fields = ['date','time', 'index', 'strike_price', 'position', 'call_type', 'lot', 'avg_price', 'sqo_price', 'sqo_price2', 'swing_high', 'swing_low', 'profit_loss', 'upload']
 
     # class DateForm(forms.Form):
     #     date = forms.DateTimeField(
@@ -16,10 +16,17 @@ class NoteForm(forms.ModelForm):
 
         widgets = {
             'index': forms.Select(attrs={'class': 'form-control'}),
-            'date': forms.TextInput(attrs={'class': 'form-control'}),
+            'date': forms.SelectDateWidget(attrs={'class': 'form-control'}),
             'time': forms.TextInput(attrs={'class': 'form-control'}),
-            # 'index': forms.TextInput(attrs={'class': 'form-control'}),
-            # 'index': forms.TextInput(attrs={'class': 'form-control'}),
-            # 'index': forms.TextInput(attrs={'class': 'form-control'}),
-            # 'index': forms.TextInput(attrs={'class': 'form-control'}),
+            'lot': forms.Select(attrs={'class': 'form-control'}),
+            'position': forms.Select(attrs={'class': 'form-control'}),
+            'call_type': forms.Select(attrs={'class': 'form-control'}),
+            'strike_price': forms.TextInput(attrs={'class': 'form-control'}),
+            'avg_price': forms.TextInput(attrs={'class': 'form-control'}),
+            'sqo_price': forms.TextInput(attrs={'class': 'form-control'}),
+            'sqo_price2': forms.TextInput(attrs={'class': 'form-control'}),
+            'swing_high': forms.TextInput(attrs={'class': 'form-control'}),
+            'swing_low': forms.TextInput(attrs={'class': 'form-control'}),
+            'profit_loss': forms.TextInput(attrs={'class': 'form-control'}),
+            # 'profit_loss': forms.ImageInput(attrs={'class': 'form-control'}),
         }

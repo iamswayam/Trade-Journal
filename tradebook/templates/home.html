@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<Body style="background-color:rgb(43, 42, 40)">   
+<Body style="background-color:rgb(44, 44, 44)">   
 <br/><br/><br/>
 
 <table class="table table-striped table-bordered table-dark">
@@ -12,11 +12,11 @@
       <th scope="col">Time</th>
       <th scope="col">Index</th>
       <th scope="col">Strike Price</th>
-      <th scope="col">Avg Price</th>   
-      <th scope="col">Square off</th>
-      <th scope="col">Square off 2</th>
-      <th scope="col">Swing High</th>
-      <th scope="col">Swing Low</th>
+      <th scope="col">Lot (Q)</th>
+      <th scope="col">Avg Rate</th>   
+      <th scope="col">SQ off</th>
+      <th scope="col">SQ off 2</th>
+      <th scope="col">Swing H/L</th>
       <th scope="col">P & L</th>
       <!-- <th scope="col">Remarks</th> -->
             
@@ -31,11 +31,11 @@
 					<td><b>{{list_item.time|time:"H:i"}}</b></td>
 					<td>{{ list_item.index }}</td>
 					<td>{{ list_item.strike_price }} <b>{{ list_item.call_type }} </b> {{ list_item.position }}</td>
+          <td>{{ list_item.lot }}</td>
           <td>{{ list_item.avg_price }}</td>
 					<td>{{ list_item.sqo_price }}</td>
 					<td>{{ list_item.sqo_price2 }}</td>
-          <td>{{ list_item.swing_high }}</td>
-					<td>{{ list_item.swing_low }}</td>
+          <td>{{ list_item.swing_high }}  |  {{ list_item.swing_low }}</td>
           <td>{{ list_item.profit_loss }}</td>
           <!-- <td>{{ list_item.remarks }}</td> -->
 				</tr>

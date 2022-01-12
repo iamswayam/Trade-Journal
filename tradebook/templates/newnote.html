@@ -1,14 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-
-<div class="row justify-content-center mt-5">
-    <div class="col-md-5">
-        <h2>New Note</h2>
-    </div>
-</div>
-
 <div class="row justify-content-center mt-5">
     <div class="col-md-5">
         {% if error %}
@@ -20,12 +12,11 @@
           <form>
             <div class="form-group">
               
-                <input method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
              
             </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         
 
