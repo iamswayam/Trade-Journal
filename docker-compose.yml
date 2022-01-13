@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/abc
+    ports:
+      - "8000:8000"
+    depends_on:
+      - pgdb
+  pgdb:
+    env_file:
+      - ./.env
+    image: postgres
+    container_name: db1
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
