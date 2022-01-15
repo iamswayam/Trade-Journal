@@ -28,7 +28,7 @@ class Note(models.Model):
     call_type = models.CharField(
         max_length=10, choices=CALL_TYPE, default='CE')
     position = models.CharField(max_length=10, choices=POSITION, default='BUY')
-    lot = models.CharField(max_length=9, choices=QUANTITIES, default='1')
+    lot = models.IntegerField(max_length=9, choices=QUANTITIES, default='1')
 
     avg_price = models.IntegerField(default=0)
     sqo_price = models.IntegerField(default=0)
