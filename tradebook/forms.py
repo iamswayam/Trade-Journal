@@ -1,6 +1,16 @@
 from .models import Note
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
 # from bootstrap_datepicker_plus.widgets import DateTimePickerInput
+
+
+
+# class NewUserCreationForm(UserCreationForm):
+#     class Meta:
+#         model = User
+        
 
 
 class NoteForm(forms.ModelForm):

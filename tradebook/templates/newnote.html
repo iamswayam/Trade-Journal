@@ -9,13 +9,11 @@
             </div>
         {% endif %}
 
-          <form>
-            <div class="form-group">
-              
-                {% csrf_token %}
+    <form method="POST">
+        {% csrf_token %}
+            <div class="form-group"></div>
                 {{ form.as_p }}
              
-            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         
