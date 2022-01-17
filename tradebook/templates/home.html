@@ -18,13 +18,14 @@
       <th scope="col">SQ off 2</th>
       <th scope="col">Swing H/L</th>
       <th scope="col">P & L</th>
-      <!-- <th scope="col">Remarks</th> -->
+      <th scope="col">Remarks</th>
             
     </tr>
   </thead>
   <tbody>
 
   			{% for list_item in notes %}
+        
   				<tr>
 					<th scope="row">{{list_item.date|date:"D, d M y"}}</th>
 					<!-- <td><b>{{list_item.date|date:"D, d M y"}}</b></td> -->
@@ -37,10 +38,11 @@
 					<td>{{ list_item.sqo_price2 }}</td>
           <td>{{ list_item.swing_high }}  |  {{ list_item.swing_low }}</td>
           <td>{{ list_item.profit_loss }}</td>
-          <!-- <td>{{ list_item.remarks }}</td> -->
+          <td>{{ q }}</td>
 				</tr>
+        
 			{% endfor %}
-			
+		
   </tbody>
 </table>
 {% comment %} {% endif %} {% endcomment %}

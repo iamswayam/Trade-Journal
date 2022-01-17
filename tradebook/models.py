@@ -28,7 +28,7 @@ class Note(models.Model):
     call_type = models.CharField(
         max_length=10, choices=CALL_TYPE, default='CE')
     position = models.CharField(max_length=10, choices=POSITION, default='BUY')
-    lot = models.IntegerField(max_length=9, choices=QUANTITIES, default='1')
+    lot = models.IntegerField(choices=QUANTITIES, default='1')
 
     avg_price = models.IntegerField(default=0)
     sqo_price = models.IntegerField(default=0)
@@ -43,3 +43,9 @@ class Note(models.Model):
     def __str__(self):
         return str(self.date) + ' -- ' + str(self.time) + ' -- ' + self.index + ' -- ' + str(self.strike_price) + ' -- ' + self.call_type
        
+       
+class Nse(models.Model):
+    ticker = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.ticker

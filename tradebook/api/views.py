@@ -1,8 +1,8 @@
-from ..models import Note
+from tradebook.models import Note
+from django.shortcuts import render
 from .serializers import NoteSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-
 
 
 @api_view()
