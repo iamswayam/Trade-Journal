@@ -4,18 +4,18 @@
 
 {% block content %}
 
-
 <br/>
+
 <body>
 
-<table style="float: left; margin-right:4px; width: 52%"
+<table style="float: left; width: 48%"
 class="table table-striped table-bordered table-dark">
   <thead class="thead-dark">
     <tr>
 
-      <th style="width:18%" scope="col">Banks</th>
+      <th style="width:17%" scope="col">Banks</th>
       <th style="width:5%" scope="col">Avg</th>
-      <th style="width:24%" scope="col">Change</th>
+      <th style="width:20%" scope="col">Change</th>
 
       <th style="width:7%" scope="col">Day H</th>
       <th style="width:7%" scope="col">Day L</th>
@@ -25,11 +25,6 @@ class="table table-striped table-bordered table-dark">
     </tr>
   </thead>
   <tbody>
-
-    <script >
-      str = ("{{xyz.companyName}}");
-      newStr = str.replace('Limited', '');
-      </script>  
 
     {% for xyz in Scont %}
     {% if xyz.change > 0 %}
@@ -68,19 +63,15 @@ class="table table-striped table-bordered table-dark">
       <th style="width:18%" scope="col">Banks</th>
       <th style="width:5%" scope="col">Avg</th>
       <th style="width:24%" scope="col">Change</th>
-      <th style="width:6%" scope="col">% Chng</th> -->
-      <!-- <th style="width:7%" scope="col">Day H</th>
-      <th style="width:7%" scope="col">Day L</th> -->
-      <!-- <th scope="col">BNF Impact%</th> -->
-<!--             
+
+       <th style="width:7%" scope="col">Day H</th>
+      <th style="width:7%" scope="col">Day L</th>
+      
+    
     </tr>
   </thead>
-  <tbody> -->
+  <tbody>
 
-    <!-- <script >
-      str = ("{{xyz.companyName}}");
-      newStr = str.replace('Limited', '');
-      </script>  
 
     {% for xyz in Scont %}
     {% if xyz.change > 0 %}
@@ -89,8 +80,8 @@ class="table table-striped table-bordered table-dark">
       <th scope="row" style="color:rgb(157, 255, 181)">{{xyz.symbol}}  <span style="color:rgba(106, 211, 133)">&#8648;</span></th>
 			<th scope="row" style="color:rgba(211, 234, 253, 0.842)">{{xyz.lastPrice}}</th>
       <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.change}} pts ({{xyz.pChange}}%)</td>
-			 <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange}}%</td> -->
-      <!-- <td scope="row" style="color:rgba(255, 255, 255, 0.842)">{{xyz.dayHigh}}</td>
+
+      <td scope="row" style="color:rgba(255, 255, 255, 0.842)">{{xyz.dayHigh}}</td>
       <td scope="row" style="color:rgba(255, 255, 255, 0.842)">{{xyz.dayLow}}</td>
 
     {% else %}   
@@ -98,13 +89,13 @@ class="table table-striped table-bordered table-dark">
 		  <th scope="row" style="color:rgb(233, 202, 202)">{{xyz.symbol}}  <span style="color:rgb(245, 100, 100)">&#8650;</span></th>
 			<th scope="row" style="color:rgba(211, 234, 253, 0.842)">{{xyz.lastPrice}}</th>
       <td scope="row" style="color:rgb(245, 100, 100)">{{xyz.change}} pts ({{xyz.pChange}}%)</td>
-			 <td scope="row" style="color:rgb(245, 100, 100)">{{xyz.pChange}}%</td> -->
-      <!-- <td scope="row" style="color:rgba(255, 255, 255, 0.842)">{{xyz.dayHigh}}</td>
+			
+      <td scope="row" style="color:rgba(255, 255, 255, 0.842)">{{xyz.dayHigh}}</td>
       <td scope="row" style="color:rgba(255, 255, 255, 0.842)">{{xyz.dayLow}}</td>
- {% if xyz.companyName == "HDFC Bank Limited" %}<td scope="row" style="color:rgb(245, 100, 100)">{{xyz.pChange}}%2A 28 %</td> {%endif%}    -->
-    <!-- {% endif %}
+ {% if xyz.companyName == "HDFC Bank Limited" %}<td scope="row" style="color:rgb(245, 100, 100)">{{xyz.pChange}}%2A 28 %</td> {%endif%}   
+    {% endif %}
     
-{% endfor %}  --> 
+{% endfor %}   -->
 </Body> 
 
 {% endblock %}

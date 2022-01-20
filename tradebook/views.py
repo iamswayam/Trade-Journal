@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -226,6 +226,12 @@ def newnote(request):
         form = NoteForm()
 
     return render(request, 'newnote.html', {'form': form})
+
+@login_required
+def logoutuser(request):
+    if request.method == "POST":
+        logout(request)
+        return redirect('home')
 
 # def nse_data(request):
 #     bnf = Nse().get_index_quote("nifty bank")

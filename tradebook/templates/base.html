@@ -18,8 +18,8 @@
         body 
          {background-color:rgb(214, 198, 198);}
     </style> 
-<!--      
-    {background-image: url('static/1234.jpg');} -->
+      
+    <!--{background-image: url('static/1234.jpg');} -->
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark border border-dark py-1">
 <div class="container">
@@ -58,114 +58,56 @@
 
 {% endfor %}
 
-<!-- {% if bn.change > 0 %}
-
-  <span class="nav-item active" > 
-
-    <b style="font-size:16px; color:rgb(255, 255, 255, 0.842)">&nbsp;&nbsp;&nbsp;&nbsp;{{bn.name}}</b> 
-    <b style="font-size:14px; color:rgb(110, 187, 129)">({{bn.pchange}}%)</b><br>
-    <b style="font-size:20px; color:rgb(106, 211, 133)">&nbsp;&nbsp;&nbsp;{{bn.prc}}</b>
-    <span style="font-size:15px; color:rgb(110, 187, 129)">({{bn.change}})</span>
-
-  </span>
-
-{% else %}
- 
-  <span class="nav-item active" > 
-
-    <b style="font-size:16px; color:rgb(255, 255, 255, 0.842)">&nbsp;&nbsp;&nbsp;&nbsp;{{bn.name}}</b> 
-    <b style="font-size:14px; color:rgb(247, 63, 63)">({{bn.pchange}}%)</b><br>
-    <b style="font-size:20px; color:rgb(247, 63, 63)">&nbsp;&nbsp;&nbsp;{{bn.prc}}</b>
-    <span style="font-size:15px; color:rgb(247, 63, 63)">({{bn.change}})</span>
-
-  </span>
-
-{% endif %}
-
-{% if vx.vchange > 0 %}
-  
-  <span class="nav-item active" > 
-
-    <b style="font-size:16px; color:rgb(255, 255, 255, 0.842)">&nbsp;&nbsp;&nbsp;&nbsp;{{vx.vname}}</b> 
-    <b style="font-size:14px; color:rgb(110, 187, 129)">({{vx.vpchange}}%)</b><br>
-    <b style="font-size:20px; color:rgb(106, 211, 133)">&nbsp;&nbsp;&nbsp;{{vx.vprc}}</b>
-    <span style="font-size:15px; color:rgb(110, 187, 129)">({{vx.vchange}})</span>
-
-  </span>
-
-{% else %}
-  <span class="nav-item active" > 
-
-    <b style="font-size:16px; color:rgb(255, 255, 255, 0.842)">&nbsp;&nbsp;&nbsp;&nbsp;{{vx.vname}}</b> 
-    <b style="font-size:14px; color:rgb(247, 63, 63)">({{vx.vpchange}}%)</b><br>
-    <b style="font-size:20px; color:rgb(247, 63, 63)">&nbsp;&nbsp;&nbsp;{{vx.vprc}}</b>
-    <span style="font-size:15px; color:rgb(247, 63, 63)">({{vx.vchange}})</span>
-
-  </span>
-
-{% endif %}
-
-
-{% if nm100.n1change > 0 %}
-
-  <span class="nav-item active" > 
-
-    <b style="font-size:16px; color:rgba(255, 255, 255, 0.842)">&nbsp;&nbsp;&nbsp;{{nm100.n1name}}</b> 
-    <b style="font-size:14px; color:rgb(110, 187, 129)">({{nm100.n1pchange}}%)</b><br>
-    <b style="font-size:20px; color:rgb(106, 211, 133)">&nbsp;&nbsp;&nbsp;{{nm100.n1prc}}</b>
-    <span style="font-size:15px; color:rgb(110, 187, 129)">({{nm100.n1change}})</span>
-
-</span>
-
-{% else %}
-
-  <span class="nav-item active" > 
-
-    <b style="font-size:16px; color:rgb(255, 255, 255, 0.842)">&nbsp;&nbsp;&nbsp;{{nm100.n1name}}</b> 
-    <b style="font-size:14px; color:rgb(247, 63, 63)">({{nm100.n1pchange}}%)</b><br>
-    <b style="font-size:20px; color:rgb(247, 63, 63)">&nbsp;&nbsp;&nbsp;{{nm100.n1prc}}</b>
-    <span style="font-size:15px; color:rgb(247, 63, 63)">({{nm100.n1change}})</span>
-
-</span> 
-
-{% endif %}
-     -->
-
     <div class="collapse navbar-collapse" id="navbarNav"></div>
 
         <ul class="navbar-nav mr-auto">
+          {% if user.is_authenticated %}
 
-            <a href="{% url 'signup' %}"><button style="margin:3px;" class="btn btn-light navbar-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-check-fill" viewBox="0 0 16 16">
+          <div class="btn-group">
+            <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-check-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
                 <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-              </svg> SignUp</button></a>
-<!-- 
-              <a href="{% url 'login' %}"><div style="margin:3px;" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-check-fill" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-              </svg> Login</div></a> -->
+              </svg>
+              {{user|capfirst}}
+            </button>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'newnote' %}">Create</a>
+            </li>
 
-                <li class="nav-item {{ create }}">
-                    <a class="nav-link" href="{% url 'newnote' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                      </svg>Create</a>
+              <ul class="navbar-nav ml-auto">
+                
+                    <li class="nav-item">
+                        <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-power" viewBox="0 0 16 16">
+                            <path d="M7.5 1v7h1V1h-1z"/>
+                            <path d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812z"/>
+                          </svg></a>
+                        <form style='display: none;' method="POST" action="{% url 'logoutuser' %}">
+                            {% csrf_token %}
+                            <button id="signOutBtn" type="submit">Logout</button>
+                        </form>
+                    </li>            
+            </div>
+          </div>
+
+                {% else %}
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'signup' %}">SignUp</a>
                 </li>
-<!-- 
-            <li class="nav-item {{ create }}">
-                  <a class="nav-link" href="{% url 'signup' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                      <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                    </svg> SignUp</a>
-            </li> -->
-
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>     
+            </li> 
+      {% endif %}
         </ul>
         </ul>
     </div>
 </div>
 </nav>
 
-<div class="container">
+
   
 {% block content %}
 {% endblock %}
