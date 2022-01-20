@@ -14,9 +14,12 @@
     <title>Tradebook</title>
 </head>
 <body>
-  <style>
-    body {background-color:rgb(214, 198, 198);}
-    </style>
+     <style> 
+        body 
+         {background-color:rgb(214, 198, 198);}
+    </style> 
+<!--      
+    {background-image: url('static/1234.jpg');} -->
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark border border-dark py-1">
 <div class="container">
@@ -27,31 +30,35 @@
           </svg></span>
     </a>
 
-{% if n50.nchange > 0 %}
+{% for abc in Icont %}
+
+{% if abc.change > 0 %}
 
   <span class="nav-item active" > 
 
-    <b style="font-size:16px; color:rgba(255, 255, 255, 0.842)">&nbsp;&nbsp;&nbsp;{{n50.nname}}</b> 
-    <b style="font-size:14px; color:rgb(110, 187, 129)">({{n50.npchange}}%)</b><br>
-    <b style="font-size:20px; color:rgb(106, 211, 133)">&nbsp;&nbsp;&nbsp;{{n50.nprc}}</b>
-    <span style="font-size:15px; color:rgb(110, 187, 129)">({{n50.nchange}})</span>
+    <b style="font-size:16px; color:rgba(255, 255, 255, 0.842)">&nbsp;&nbsp;{{abc.name}}</b> 
+    <b style="font-size:14px; color:rgb(110, 187, 129)">({{abc.pChange}}%)</b><br>
+    <b style="font-size:20px; color:rgb(106, 211, 133)">&nbsp;&nbsp;{{abc.lastPrice}}</b>
+    <span style="font-size:15px; color:rgb(110, 187, 129)">({{abc.change}})</span>
 
 </span>
 
 {% else %}
 
-  span class="nav-item active" > 
+  <span class="nav-item active" > 
 
-    <b style="font-size:16px; color:rgb(255, 255, 255, 0.842)">&nbsp;&nbsp;&nbsp;{{n50.nname}}</b> 
-    <b style="font-size:14px; color:rgb(247, 63, 63)">({{n50.npchange}}%)</b><br>
-    <b style="font-size:20px; color:rgb(247, 63, 63)">&nbsp;&nbsp;&nbsp;{{n50.nprc}}</b>
-    <span style="font-size:15px; color:rgb(247, 63, 63)">({{n50.nchange}})</span>
+    <b style="font-size:16px; color:rgb(255, 255, 255, 0.842)">&nbsp;&nbsp;{{abc.name}}</b> 
+    <b style="font-size:14px; color:rgb(247, 63, 63)">({{abc.pChange}}%)</b><br>
+    <b style="font-size:20px; color:rgb(247, 63, 63)">&nbsp;&nbsp;{{abc.lastPrice}}</b>
+    <span style="font-size:15px; color:rgb(247, 63, 63)">({{abc.change}})</span>
 
 </span> 
 
 {% endif %}
 
-{% if bn.change > 0 %}
+{% endfor %}
+
+<!-- {% if bn.change > 0 %}
 
   <span class="nav-item active" > 
 
@@ -61,7 +68,6 @@
     <span style="font-size:15px; color:rgb(110, 187, 129)">({{bn.change}})</span>
 
   </span>
-
 
 {% else %}
  
@@ -98,7 +104,32 @@
   </span>
 
 {% endif %}
-    
+
+
+{% if nm100.n1change > 0 %}
+
+  <span class="nav-item active" > 
+
+    <b style="font-size:16px; color:rgba(255, 255, 255, 0.842)">&nbsp;&nbsp;&nbsp;{{nm100.n1name}}</b> 
+    <b style="font-size:14px; color:rgb(110, 187, 129)">({{nm100.n1pchange}}%)</b><br>
+    <b style="font-size:20px; color:rgb(106, 211, 133)">&nbsp;&nbsp;&nbsp;{{nm100.n1prc}}</b>
+    <span style="font-size:15px; color:rgb(110, 187, 129)">({{nm100.n1change}})</span>
+
+</span>
+
+{% else %}
+
+  <span class="nav-item active" > 
+
+    <b style="font-size:16px; color:rgb(255, 255, 255, 0.842)">&nbsp;&nbsp;&nbsp;{{nm100.n1name}}</b> 
+    <b style="font-size:14px; color:rgb(247, 63, 63)">({{nm100.n1pchange}}%)</b><br>
+    <b style="font-size:20px; color:rgb(247, 63, 63)">&nbsp;&nbsp;&nbsp;{{nm100.n1prc}}</b>
+    <span style="font-size:15px; color:rgb(247, 63, 63)">({{nm100.n1change}})</span>
+
+</span> 
+
+{% endif %}
+     -->
 
     <div class="collapse navbar-collapse" id="navbarNav"></div>
 
@@ -108,11 +139,11 @@
                 <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
                 <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
               </svg> SignUp</button></a>
-
+<!-- 
               <a href="{% url 'login' %}"><div style="margin:3px;" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-check-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
                 <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-              </svg> Login</div></a>
+              </svg> Login</div></a> -->
 
                 <li class="nav-item {{ create }}">
                     <a class="nav-link" href="{% url 'newnote' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

@@ -44,7 +44,14 @@ class Note(models.Model):
         return str(self.date) + ' -- ' + str(self.time) + ' -- ' + self.index + ' -- ' + str(self.strike_price) + ' -- ' + self.call_type
        
        
-class Nse(models.Model):
+class NseIndexData(models.Model):
+    ticker = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.ticker
+    
+    
+class NseStockData(models.Model):
     ticker = models.CharField(max_length=20)
 
     def __str__(self):

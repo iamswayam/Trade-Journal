@@ -5,42 +5,183 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 from django.db import IntegrityError
-from django.urls import reverse
-from .models import Note
+from .models import Note, NseIndexData, NseStockData
 from .forms import NoteForm
 from nsetools import Nse
+import requests 
+import json 
 
 
 def home(request):
-    notes = Note.objects.all()
     
-    nf = Nse().get_index_quote("nifty 50")
-    bnf = Nse().get_index_quote("nifty bank")
-    vix = Nse().get_index_quote("india vix")
+    indexAll = NseIndexData.objects.all()
+    Icont = []
     
-    nname = nf['name']
-    nprc = nf['lastPrice']
-    nchange = nf['change']
-    npchange = nf['pChange']
-    nchart = nf['imgFileName']
+    stockAll = NseStockData.objects.all()
+    Scont = []
     
-    name = bnf['name']
-    prc = bnf['lastPrice']
-    change = bnf['change']
-    pchange = bnf['pChange']
-    chart = bnf['imgFileName']
+    for index in indexAll:
+        
+        mData = Nse().get_index_quote(str(index))
+        Icont.append(mData)
+        
+        name = mData['name']
+        prc = mData['lastPrice']
+        change = mData['change']
+        pchange = mData['pChange']
+        chart = mData['imgFileName']
+        
+        indContext = {'name': name, 'prc': prc, 'change':change, 'pchange': pchange, 'chart': chart}
+        
+        # print(indContext['name'], indContext['prc'])
+        
+        # return render(request, 'home.html', {'indContext':indContext, 'Icont': Icont})
+        
+    for stock in stockAll:
+        
+        mData = Nse().get_quote(str(stock))
+        Scont.append(mData)
+        
+        name = mData['companyName']
+        prc = mData['lastPrice']
+        change = mData['change']
+        pchange = mData['pChange']
+        dhigh = mData['dayHigh']
+        dlow = mData['dayLow']
+        p_bnf = "{:.2f}".format(float(mData['pChange']) * 3.59712230216)
+        
+        stoContext = {'name': name, 'prc': prc, 'change':change, 'pchange': pchange, 'dhigh': dhigh, 'dlow': dlow, 'p_bnf': p_bnf}
+        
+        # print(stoContext['name'], stoContext['prc'])    
+        
+    return render(request, 'home.html', {'stoContext':stoContext, 'Scont': Scont, 'indContext':indContext, 'Icont': Icont})
     
-    vname = vix['name']
-    vprc = vix['lastPrice']
-    vchange = vix['change']
-    vpchange = vix['pChange']
     
-    vx = {'vname':vname, 'vprc':vprc, 'vchange':vchange, 'vpchange': vpchange}
-    n50 = {'nname':nname, 'nprc':nprc, 'nchange':nchange, 'npchange': npchange, 'nchart': nchart}
-    bn = {'name':name, 'prc':prc, 'change':change, 'pchange': pchange, 'chart': chart}
+# def stockLive(request):
     
-    return render(request, 'home.html', {'notes': notes, 'bn':bn, 'n50':n50, 'vx':vx})
+#     stockAll = NseStockData.objects.all()
+#     Scont = []
+    
+#     for stock in stockAll:
+        
+#         mData = Nse().get_quote(str(stock))
+#         Scont.append(mData)
+        
+#         name = mData['companyName']
+#         prc = mData['lastPrice']
+#         change = mData['change']
+#         pchange = mData['pChange']
+#         dhigh = mData['dayHigh']
+#         dlow = mData['dayLow']
+#         p_bnf = "{:.2f}".format(float(mData['pChange']) * 3.59712230216)
+        
+#         stoContext = {'name': name, 'prc': prc, 'change':change, 'pchange': pchange, 'dhigh': dhigh, 'dlow': dlow, 'p_bnf': p_bnf}
+        
+#         print(stoContext['name'], stoContext['prc'])
+        
+#         return render(request, 'home.html', {'stoContext':stoContext, 'Scont': Scont})
+    
 
+    
+    
+    
+    
+        # notes = Note.objects.all()
+
+	# if request.method == 'POST':
+	# 	form = NseForm(request.POST or None)
+
+	# 	if form.is_valid():
+	# 		form.save()
+	# 		return redirect('home')
+
+	# else:	
+	# 	ticker = NseData.objects.all()
+	# 	output = []
+	# 	for ticker_item in ticker:
+	# 		api_request = Nse().get_index_quote(str(ticker_item))
+	# 		try:
+	# 			api = json.loads(api_request.content)
+	# 			output.append(api)
+	# 		except Exception as e:
+	# 			api = "Error..."
+		
+	# 	return render(request, 'home.html', {'ticker': ticker, 'output': output})
+    
+    # nf = Nse().get_index_quote("nifty 50")
+    # bnf = Nse().get_index_quote("nifty bank")
+    # vix = Nse().get_index_quote("india vix")
+    # nm = Nse().get_index_quote("nifty midcap 100")
+    
+    # nname = nf['name']
+    # nprc = nf['lastPrice']
+    # nchange = nf['change']
+    # npchange = nf['pChange']
+    # nchart = nf['imgFileName']
+    
+    # name = bnf['name']
+    # prc = bnf['lastPrice']
+    # change = bnf['change']
+    # pchange = bnf['pChange']
+    # chart = bnf['imgFileName']
+    
+    # vname = vix['name']
+    # vprc = vix['lastPrice']
+    # vchange = vix['change']
+    # vpchange = vix['pChange']
+    
+    # n1name = nm['name']
+    # n1prc = nm['lastPrice']
+    # n1change = nm['change']
+    # n1pchange = nm['pChange']
+    # n1chart = nm['imgFileName']
+    
+    # vx = {'vname':vname, 'vprc':vprc, 'vchange':vchange, 'vpchange': vpchange}
+    # n50 = {'nname':nname, 'nprc':nprc, 'nchange':nchange, 'npchange': npchange, 'nchart': nchart}
+    # bn = {'name':name, 'prc':prc, 'change':change, 'pchange': pchange, 'chart': chart}
+    # nm100 = {'n1name':n1name, 'n1prc':n1prc, 'n1change':n1change, 'n1pchange': n1pchange, 'n1chart': n1chart}
+    
+    # hdfcb = Nse().get_quote('hdfcbank')
+    
+    # hdname = hdfcb['companyName']
+    # hdavg = hdfcb['lastPrice']
+    # hdchange = hdfcb['change']
+    # hdpchange = hdfcb['pChange']
+    # hdhighd = hdfcb['dayHigh']
+    # hdlowd = hdfcb['dayLow']
+    # hd_bnf = "{:.2f}".format(float(hdfcb['pChange']) * 3.59712230216)
+    
+    # icici = Nse().get_quote('icicibank')
+    
+    # icname = icici['companyName']
+    # icavg = icici['lastPrice']
+    # icchange = icici['change']
+    # icpchange = icici['pChange']
+    # ichighd = icici['dayHigh']
+    # iclowd = icici['dayLow']
+    # ic_bnf = "{:.2f}".format(float(icici['pChange']) * 4.42086648983)
+    
+    # kotak = Nse().get_quote('kotakbank')
+    
+    # koname = kotak['companyName']
+    # koavg = kotak['lastPrice']
+    # kochange = kotak['change']
+    # kopchange = kotak['pChange']
+    # kohighd = kotak['dayHigh']
+    # kolowd = kotak['dayLow']
+    # ko_bnf = "{:.2f}".format(float(kotak['pChange']) * 8.61326442722)
+    
+    # hdfcbank = {'hdname':hdname, 'hdavg': hdavg, 'hdchange': hdchange, 'hdpchange': hdpchange, 'hdhighd':hdhighd, 'hdlowd': hdlowd, 'hd_bnf': hd_bnf}
+    # icic = {'icname': icname, 'icavg': icavg, 'icchange': icchange, 'icpchange': icpchange, 'ichighd': ichighd, 'iclowd': iclowd, 'ic_bnf': ic_bnf}
+    # kot = {'koname': koname, 'koavg': koavg, 'kochange': kochange, 'kopchange': kopchange, 'kohighd': kohighd, 'kolowd': kolowd, 'ko_bnf': ko_bnf}
+    
+    
+    # return render(request, 'home.html', {'notes': notes, 'bn':bn, 'n50':n50, 'vx':vx, 'nm100': nm100, 'hdfcbank': hdfcbank, 'icic': icic, 'kot': kot})
+
+
+    
+    
+4.42086648983
 
 def SignupPage(request):
     
