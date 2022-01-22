@@ -59,21 +59,26 @@
 {% endfor %}
 
     <div class="collapse navbar-collapse" id="navbarNav"></div>
-
         <ul class="navbar-nav mr-auto">
+          
           {% if user.is_authenticated %}
+      
+            <div class="btn-group">
+              <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-check-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            </svg>  {{user|capfirst}}
+          </button>
 
-          <div class="btn-group">
-            <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-check-fill" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-              </svg>
-              {{user|capfirst}}
-            </button>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'newnote' %}">Create</a>
-            </li>
+          <div class="dropdown-menu">
+            
+              <a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a>        
+              <a class="dropdown-item" href="{% url 'newnote' %}">Create</a>
+             
+          </div>
+        </div>
 
               <ul class="navbar-nav ml-auto">
                 
@@ -89,29 +94,32 @@
                     </li>            
             </div>
           </div>
+      
+          {% else %}
 
-                {% else %}
+      <div class="btn-group">
+      <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sign up / Login
+      </button>
 
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'signup' %}">SignUp</a>
-                </li>
-                
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'login' %}">Login</a>
-                </li>     
-            </li> 
-      {% endif %}
-        </ul>
-        </ul>
+      <div class="dropdown-menu">
+        
+          <a class="dropdown-item" href="{% url 'signup' %}">Sign up</a>        
+          <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+         
+      </div>
     </div>
-</div>
+
+      {% endif %}
+
+    </ul></ul>     
+      </div></div>
 </nav>
+</div>
 
-
-  
 {% block content %}
 {% endblock %}
-</div>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

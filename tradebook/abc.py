@@ -1,28 +1,12 @@
-# from nsetools import Nse
+from nsetools import Nse
 
-# index = ("nifty 50")
+index = ("cnx it")
         
-# mData = Nse().get_index_quote(index)
+context = Nse().get_index_quote(index)
         
-# name = mData['name']
-# prc = mData['lastPrice']
-# change = mData['change']
-# pchange = mData['pChange']
-# chart = mData['imgFileName']
         
-# context = {'name': name, 'prc': prc, 'change':change, 'pchange': pchange, 'chart': chart}
-        
-# print(context['name'], ':-' , context['prc'])
+print(context)
 
-x = []
-
-i = "nifty bank"
-
-x.append(i)
-
-y = tuple(x)
-
-print(y)
 
 
 

@@ -219,8 +219,8 @@ def newnote(request):
         form = NoteForm(request.POST)
 
         if form.is_valid():
-            newnote = form.save()
-            return redirect('home')
+            form.save()
+            return redirect('dashboard')
             
     else:
         form = NoteForm()
@@ -232,6 +232,11 @@ def logoutuser(request):
     if request.method == "POST":
         logout(request)
         return redirect('home')
+    
+@login_required   
+def dashboard(request):
+    notes = Note.objects.all()
+    return render(request, 'dashboard.html', {'notes': notes})
 
 # def nse_data(request):
 #     bnf = Nse().get_index_quote("nifty bank")
