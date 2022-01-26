@@ -50,11 +50,14 @@ def home(request):
         dlow = mData['dayLow']
         p_bnf = "{:.2f}".format(float(mData['pChange']) * 3.59712230216)
         
+        bnf = Nse().get_index_quote("nifty bank")
+        bnfpchange = bnf['pChange']
+           
         stoContext = {'name': name, 'prc': prc, 'change':change, 'pchange': pchange, 'dhigh': dhigh, 'dlow': dlow, 'p_bnf': p_bnf}
         
         # print(stoContext['name'], stoContext['prc'])    
         
-    return render(request, 'home.html', {'stoContext':stoContext, 'Scont': Scont, 'indContext':indContext, 'Icont': Icont})
+    return render(request, 'home.html', {'bnfpchange': bnfpchange, 'stoContext':stoContext, 'Scont': Scont, 'indContext':indContext, 'Icont': Icont})
     
     
 # def stockLive(request):

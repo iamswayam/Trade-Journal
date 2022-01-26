@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'tradebook',
     'rest_framework',
     'bootstrap_datepicker_plus',
+    'mathfilters',
 ]
 
 MIDDLEWARE = [
