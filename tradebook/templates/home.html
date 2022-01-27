@@ -10,14 +10,14 @@
 
 <body style="background-color:#181414"> 
   
-<table style="float: left; width: 58%"
+<table style="float: left; width: 59%"
 class="table table-striped table-bordered table-dark">
   <thead class="thead-dark">
     <tr>
 
       <th style="width:25%" scope="col">Banks</th>
       <th style="width:5%" scope="col">Avg</th>
-      <th style="width:24%" scope="col">Change</th>
+      <th style="width:26%" scope="col">Change</th>
       <th style="width:7%" scope="col">Day H</th>
       <th style="width:7%" scope="col">Day L</th>
       <th style="width:7%" scope="col">BNF%</th>
@@ -41,25 +41,25 @@ class="table table-striped table-bordered table-dark">
       <td scope="row" style="color:rgba(255, 255, 255, 0.842)">{{xyz.dayLow}}</td>
 
     {% if xyz.symbol == "HDFCBANK" %}
-      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:27.80|div:bnfpchange|stringformat:".2f"}}%</td>
+      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:27.80|div:bnfpchange|stringformat:".2f"|cut:"-"}}%</td>
     {% elif xyz.symbol == "ICICIBANK" %}
-      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:22.62|div:bnfpchange|stringformat:".2f"}}%</td>
+      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:22.62|div:bnfpchange|stringformat:".2f"|cut:"-"}}%</td>
     {% elif xyz.symbol == "KOTAKBANK" %}
-      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:11.61|div:bnfpchange|stringformat:".2f"}}%</td>
+      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:11.61|div:bnfpchange|stringformat:".2f"|cut:"-"}}%</td>
     {% elif xyz.symbol == "AXISBANK" %}
-      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:11.52|div:bnfpchange|stringformat:".2f"}}%</td>
+      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:11.52|div:bnfpchange|stringformat:".2f"|cut:"-"}}%</td>
     {% elif xyz.symbol == "SBIN" %}
-      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:11.45|div:bnfpchange|stringformat:".2f"}}%</td>
+      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:11.45|div:bnfpchange|stringformat:".2f"|cut:"-"}}%</td>
     {% elif xyz.symbol == "INDUSINDBK" %}
-      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:5.91|div:bnfpchange|stringformat:".2f"}}%</td>
+      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:5.91|div:bnfpchange|stringformat:".2f"|cut:"-"}}%</td>
     {% elif xyz.symbol == "AUBANK" %}
-      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:2.33|div:bnfpchange|stringformat:".2f"}}%</td>
+      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:2.33|div:bnfpchange|stringformat:".2f"|cut:"-"}}%</td>
     {% elif xyz.symbol == "BANDHANBNK" %}
-      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:1.75|div:bnfpchange|stringformat:".2f"}}%</td>
+      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:1.75|div:bnfpchange|stringformat:".2f"|cut:"-"}}%</td>
     {% elif xyz.symbol == "FEDERALBNK" %}
-      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:1.70|div:bnfpchange|stringformat:".2f"}}%</td>
+      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:1.70|div:bnfpchange|stringformat:".2f"|cut:"-"}}%</td>
     {% elif xyz.symbol == "IDFCFIRSTB" %}
-      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:1.54|div:bnfpchange|stringformat:".2f"}}%</td>
+      <td scope="row" style="color:rgba(106, 211, 133)">{{xyz.pChange|mul:1.54|div:bnfpchange|stringformat:".2f"|cut:"-"}}%</td>
     {% endif %}
  
 
