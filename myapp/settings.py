@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'bootstrap_datepicker_plus',
     'mathfilters',
+    'admin_honeypot',
 ]
 
 MIDDLEWARE = [
